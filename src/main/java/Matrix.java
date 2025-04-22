@@ -18,4 +18,14 @@ public class Matrix {
         }
         this.data = data;
     }
+
+    //Returns number of rows (outer array length)
+    public int rowCount() {
+        return data.length;
+    }
+
+    //Returns number of columns (inner array length)
+    public int columnCount(){
+        return data[0].length;
+    }
 }
