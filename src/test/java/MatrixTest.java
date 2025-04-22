@@ -31,4 +31,16 @@ public class MatrixTest {
         assertEquals(4, testMatrix.columnCount()); //Checks if the columns are 4
 
     }
+
+    //Test row and column count from a 2D array
+    @Test
+    public void testRowAndColumnCountWith2DArray(){
+        int[][] testArray = {
+                {1, 2, 3}, {4, 5, 6}
+        }; // 2X3 matrix
+
+        Matrix testMatrix = new Matrix(testArray);
+        assertEquals(2, testMatrix.rowCount()); //Checks if the rows are 2
+        assertEquals(3, testMatrix.columnCount()); //Checks if the columns are 3
+    }
 }
