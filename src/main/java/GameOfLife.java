@@ -33,4 +33,57 @@ public class GameOfLife extends Matrix{
         setData(newData); // Update board
     }
 
+    // Computes the next generation based on Conway's Game of Life rules
+    public void step() {
+
+        int[][] current = getData();
+        int rows = rowCount();
+        int cols = columnCount();
+        int[][] nextGen = new int[rows][cols];
+
+        // Iterate over each cell in the current Matrix
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+
+                // Calls in the helper method to count Alive neighbors in each iteration
+                int aliveNeighbors = countAliveNeighbors(current, r, c);
+
+                // Decides if next generation of the current cell is alive
+                if (current[r][c] == 1) {
+                    // Cell is alive
+                    nextGen[r][c] = (aliveNeighbors == 2 || aliveNeighbors == 3) ? 1 : 0;
+                } else {
+                    // Cell is dead
+                    nextGen[r][c] = (aliveNeighbors == 3) ? 1 : 0;
+                }
+            }
+        }
+
+        setData(nextGen); // Update to next generation
+    }
+
+    // Helper method to count alive neighbors of a cell
+    // iterates over the cells surrounding the current cell to check whether they are alive
+    private int countAliveNeighbors(int[][] grid, int r, int c) {
+
+        int aliveCount = 0;
+
+        // Checking range for rows is r-1 to r+1 for every column
+        for (int i = r - 1; i <= r + 1; i++) {
+            // Checking range for columns is c-1 to c+1 for every column
+            for (int j = c - 1; j <= c + 1; j++) {
+
+                // If we come across the cell we are currently checking neighbors for, we skip the check
+                if (i == r && j == c) continue;
+
+                // As we are checking through the grid, we make sure not to go over the boundaries of the matrix
+                if (i >= 0 && j >= 0 && i < grid.length && j < grid[0].length) {
+                    aliveCount += grid[i][j];
+                }
+            }
+        }
+        return aliveCount;
+    }
+
+
 }
