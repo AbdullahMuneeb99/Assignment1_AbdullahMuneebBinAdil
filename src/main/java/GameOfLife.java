@@ -85,5 +85,60 @@ public class GameOfLife extends Matrix{
         return aliveCount;
     }
 
+    // Demo method with animation
+    public static void main(String[] args) throws InterruptedException {
+        BoolMatrixPrinter printer = new BoolMatrixPrinter();
 
+        // === Blinker Demo ===
+        System.out.println("=== Blinker Demo ===");
+        Shape blinker = new Shape("Blinker", new int[][]{
+                {0, 1, 0},
+                {0, 1, 0},
+                {0, 1, 0}
+        });
+
+        GameOfLife game1 = new GameOfLife(10, 10);
+        game1.addShape(blinker, 2, 2);
+
+        for (int step = 0; step < 10; step++) {
+            System.out.println(printer.print(game1));
+            Thread.sleep(500);
+            game1.step();
+        }
+
+        // === Glider Demo ===
+        System.out.println("\n=== Glider Demo ===");
+        Shape glider = new Shape("Glider", new int[][]{
+                {0, 1, 0},
+                {0, 0, 1},
+                {1, 1, 1}
+        });
+
+        GameOfLife game2 = new GameOfLife(10, 10);
+        game2.addShape(glider, 0, 0);
+
+        for (int step = 0; step < 10; step++) {
+            System.out.println(printer.print(game2));
+            Thread.sleep(500);
+            game2.step();
+        }
+
+        // === Beacon Demo ===
+        System.out.println("\n=== Beacon Demo ===");
+        Shape beacon = new Shape("Beacon", new int[][]{
+                {1, 1, 0, 0},
+                {1, 1, 0, 0},
+                {0, 0, 1, 1},
+                {0, 0, 1, 1}
+        });
+
+        GameOfLife game3 = new GameOfLife(10, 10);
+        game3.addShape(beacon, 2, 2);
+
+        for (int step = 0; step < 10; step++) {
+            System.out.println(printer.print(game3));
+            Thread.sleep(500);
+            game3.step();
+        }
+    }
 }
