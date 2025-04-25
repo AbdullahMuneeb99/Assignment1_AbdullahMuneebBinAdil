@@ -27,4 +27,32 @@ public class Shape extends Matrix{
     public String getName() {
         return name;
     }
+
+    // Instances of Shape class
+    public static void main(String[] args) {
+        // Beehive shape (still life)
+        int[][] beehiveData = {
+                {0, 1, 1, 0},
+                {1, 0, 0, 1},
+                {0, 1, 1, 0}
+        };
+        Shape beehive = new Shape("Beehive", beehiveData);
+
+        // Boat shape (still life)
+        int[][] boatData = {
+                {1, 1, 0},
+                {1, 0, 1},
+                {0, 1, 0}
+        };
+        Shape boat = new Shape("Boat", boatData);
+
+        // Use BoolMatrixPrinter to print both shapes
+        BoolMatrixPrinter printer = new BoolMatrixPrinter();
+
+        System.out.println("Shape: " + beehive.getName());
+        System.out.println(printer.print(beehive));
+
+        System.out.println("\nShape: " + boat.getName());
+        System.out.println(printer.print(boat));
+    }
 }
