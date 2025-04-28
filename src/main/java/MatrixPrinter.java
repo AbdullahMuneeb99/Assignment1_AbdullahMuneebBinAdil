@@ -1,5 +1,13 @@
+/**
+ * Interface for converting a Matrix into a String representation.
+ */
+
 public interface MatrixPrinter {
 
-    // Method/Contract that takes a Matrix and returns a String representation
-    String print(Matrix matrix);
+    /**
+     * Prints the given matrix as a String.
+     * @param matrix the matrix to print
+     * @return string representation of the matrix
+     */
+    String print (Matrix matrix);
 }

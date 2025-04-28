@@ -1,6 +1,9 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ * Unit tests for the Matrix class.
+ */
 public class MatrixTest {
 
     // Test Constructor if it throws exception for invalid rows

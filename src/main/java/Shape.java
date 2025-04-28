@@ -1,9 +1,20 @@
+/**
+ * Represents a named shape made of a boolean (0/1) matrix.
+ * Extends the Matrix class by adding a name field for identification.
+ */
 public class Shape extends Matrix{
 
     private String name;
 
-    // Constructor with name and data array (data should be in binary)
-    public Shape(String name, int[][] data) {
+    /**
+     * Constructs a Shape with a given name and a 2D array of 0s and 1s.
+     * Validates that the name is not null/empty and the matrix contains only 0s and 1s.
+     *
+     * @param name the name of the shape
+     * @param data a 2D integer array representing the shape (must contain only 0s and 1s)
+     * @throws IllegalArgumentException if the name is invalid or the matrix contains values other than 0 or 1
+     */
+    public Shape (String name, int[][] data) {
         super(data); // Call Matrix constructor to set data
 
         // Validating name of shape
@@ -23,12 +34,20 @@ public class Shape extends Matrix{
         this.name = name;
     }
 
-    // Getter for name
+    /**
+     * Gets the name of the shape.
+     *
+     * @return the name of the shape
+     */
     public String getName() {
         return name;
     }
 
-    // Instances of Shape class
+    /**
+     * Main method to showcase the creation and printing of two Shape instances: Beehive and Boat.
+     *
+     * @param args command line arguments (not used)
+     */
     public static void main(String[] args) {
         // Beehive shape (still life)
         int[][] beehiveData = {

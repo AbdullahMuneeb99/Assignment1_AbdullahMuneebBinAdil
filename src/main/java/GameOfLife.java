@@ -1,14 +1,31 @@
-public class GameOfLife extends Matrix{
+/**
+ * Represents the Game of Life simulation field.
+ * Extends the Matrix class to implement Conway's Game of Life logic.
+ */
+public class GameOfLife extends Matrix {
 
-    // Constructor: creates a game field with specified size
-    public GameOfLife(int rows, int cols) {
+    /**
+     * Constructs a GameOfLife board with a specified number of rows and columns.
+     *
+     * @param rows number of rows in the board
+     * @param cols number of columns in the board
+     */
+    public GameOfLife (int rows, int cols) {
 
         super(rows, cols); // Call Matrix constructor
 
     }
 
-    // Adds the required shape at a given position (row, col)
-    public void addShape(Shape shape, int startRow, int startCol) {
+    /**
+     * Adds a Shape to the board at a specified starting row and column.
+     * Throws an exception if the shape cannot fit at the given position.
+     *
+     * @param shape the Shape to add
+     * @param startRow the starting row position
+     * @param startCol the starting column position
+     * @throws IllegalArgumentException if the shape does not fit within the bounds
+     */
+    public void addShape (Shape shape, int startRow, int startCol) {
 
         // Gets the data (values in Matrix)
         int[][] shapeData = shape.getData();
@@ -33,7 +50,10 @@ public class GameOfLife extends Matrix{
         setData(newData); // Update board
     }
 
-    // Computes the next generation based on Conway's Game of Life rules
+    /**
+     * Advances the board by one generation according to Conway's Game of Life rules.
+     * Updates the board state based on neighbor counts.
+     */
     public void step() {
 
         int[][] current = getData();
@@ -59,12 +79,19 @@ public class GameOfLife extends Matrix{
             }
         }
 
-        setData(nextGen); // Update to next generation
+        setData(nextGen);
     }
 
-    // Helper method to count alive neighbors of a cell
-    // iterates over the cells surrounding the current cell to check whether they are alive
-    private int countAliveNeighbors(int[][] grid, int r, int c) {
+    /**
+     * Counts the number of alive (1) neighboring cells around a given cell.
+     * Skips counting the cell itself and ensures bounds checking.
+     *
+     * @param grid the current board grid
+     * @param r the row index of the cell
+     * @param c the column index of the cell
+     * @return the number of alive neighbors
+     */
+    private int countAliveNeighbors (int[][] grid, int r, int c) {
 
         int aliveCount = 0;
 
@@ -85,8 +112,14 @@ public class GameOfLife extends Matrix{
         return aliveCount;
     }
 
-    // Demo method with animation
-    public static void main(String[] args) throws InterruptedException {
+    /**
+     * Main method to demonstrate Game of Life using Blinker, Glider, and Beacon patterns.
+     * Animates 10 generations of each pattern with a delay between each step.
+     *
+     * @param args command line arguments (not used)
+     * @throws InterruptedException if the thread sleep is interrupted
+     */
+    public static void main (String[] args) throws InterruptedException {
         BoolMatrixPrinter printer = new BoolMatrixPrinter();
 
         // === Blinker Demo ===

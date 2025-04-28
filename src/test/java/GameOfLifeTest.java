@@ -1,6 +1,9 @@
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Unit tests for the GameOfLife class.
+ */
 public class GameOfLifeTest {
 
     // Helper to build a BoolMatrixPrinter and return the board as a string

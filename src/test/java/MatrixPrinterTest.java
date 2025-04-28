@@ -1,6 +1,9 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ * Unit tests for MatrixPrinter and its implementations.
+ */
 public class MatrixPrinterTest {
 
 
